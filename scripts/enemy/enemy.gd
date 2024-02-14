@@ -28,10 +28,8 @@ func _physics_process(delta):
 			navigation_agent_3d.target_position = target.global_position
 			var next_pos = navigation_agent_3d.get_next_path_position()
 			var direction = position.direction_to(next_pos)
-			if global_transform.origin.is_equal_approx(next_pos):
-				return
-			else:
-				look_at(Vector3(target.global_position.x, position.y, target.global_position.x))
+			#look_at(Vector3(target.global_position.x, position.y, target.global_position.z))
+			_look_at_target_interpolated(0.06)
 			
 			if direction:
 				velocity.x = direction.x * SPEED
@@ -41,6 +39,11 @@ func _physics_process(delta):
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func _look_at_target_interpolated(weight:float) -> void:
+	var xform := transform # your transform
+	xform = xform.looking_at(target.global_position,Vector3.UP)
+	transform = transform.interpolate_with(xform,weight)
 
 func set_enemy_stats (value: Stats) -> void: 
 	stats = value.create_instance()

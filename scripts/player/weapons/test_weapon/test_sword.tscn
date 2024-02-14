@@ -20,6 +20,7 @@ mesh = ExtResource("2_6vj44")
 [node name="bat" parent="." instance=ExtResource("3_uj4h2")]
 
 [node name="hurtbox" parent="." instance=ExtResource("2_euhkp")]
+monitoring = false
 
 [node name="CollisionShape3D" parent="hurtbox" index="0"]
 disabled = false
