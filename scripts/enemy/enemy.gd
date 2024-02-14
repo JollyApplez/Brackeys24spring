@@ -31,7 +31,7 @@ func _physics_process(delta):
 			if global_transform.origin.is_equal_approx(next_pos):
 				return
 			else:
-				look_at(Vector3(next_pos.x, position.y, next_pos.z) )
+				look_at(Vector3(target.global_position.x, position.y, target.global_position.x))
 			
 			if direction:
 				velocity.x = direction.x * SPEED
@@ -41,7 +41,6 @@ func _physics_process(delta):
 				velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-
 
 func set_enemy_stats (value: Stats) -> void: 
 	stats = value.create_instance()
@@ -61,7 +60,6 @@ func update_enemy() -> void:
 	
 func update_stats() -> void:
 		pass #Update UI here
-
 
 func take_damage(damage: int, k: Knockback) -> void: 
 	if stats.health <= 0: 

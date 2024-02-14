@@ -1,0 +1,47 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqqy5ukptgbjy"]
+
+[ext_resource type="Script" path="res://scripts/level/level_manager.gd" id="1_30le3"]
+[ext_resource type="PackedScene" uid="uid://cwm1xcbvvrmm7" path="res://scripts/level/arenas/arena_20_col.tscn" id="2_3hlwe"]
+[ext_resource type="Script" path="res://custom_resources/difficulty_level.gd" id="2_v6d76"]
+[ext_resource type="PackedScene" uid="uid://bopykpb0h0duo" path="res://scripts/player/weapons/test_weapon/test_sword.tscn" id="3_gjopt"]
+[ext_resource type="PackedScene" uid="uid://co3cajfipcrse" path="res://scripts/level/arenas/arena_30_col.tscn" id="3_xq1u1"]
+[ext_resource type="PackedScene" uid="uid://c6bl1vh8e0uws" path="res://scripts/enemy/enemy.tscn" id="4_08bof"]
+[ext_resource type="PackedScene" uid="uid://bt75ktxc4le1a" path="res://scripts/level/arenas/arena_40_col.tscn" id="4_nb74s"]
+
+[sub_resource type="Resource" id="Resource_d5t4x"]
+script = ExtResource("2_v6d76")
+level = 1
+min_enemy_amount = 1
+max_enemy_amount = 1
+min_spawn_time = 2.0
+max_spawn_time = 3.0
+type_amount = 1
+
+[sub_resource type="Resource" id="Resource_tl53q"]
+script = ExtResource("2_v6d76")
+level = 2
+min_enemy_amount = 1
+max_enemy_amount = 2
+min_spawn_time = 2.0
+max_spawn_time = 4.0
+type_amount = 1
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_v5541"]
+vertices = PackedVector3Array(-18.7323, 0.707174, -0.482277, -18.4823, 0.707174, 1.26772, -13.4823, 0.707174, 13.2677, -0.482277, 0.707174, 18.7677, 0.517723, 0.707174, 18.7677, 13.2677, 0.707174, 13.5177, 18.7677, 0.707174, 0.517723, 18.7677, 0.707174, -0.482277, 13.5177, 0.707174, -13.2323, 0.517723, 0.707174, -18.7323, 0.517723, 0.707174, -18.7323, -1.23228, 0.707174, -18.4823, -13.2323, 0.707174, -13.4823, -18.7323, 0.707174, -0.482277, 18.7677, 0.707174, 0.517723, 0.517723, 0.707174, -18.7323, -18.7323, 0.707174, -0.482277, -13.4823, 0.707174, 13.2677, -0.482277, 0.707174, 18.7677, 13.2677, 0.707174, 13.5177)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(19, 18, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(14, 17, 16), PackedInt32Array(14, 16, 15)]
+
+[node name="LevelManager" type="Node3D"]
+script = ExtResource("1_30le3")
+levels = Array[ExtResource("2_v6d76")]([SubResource("Resource_d5t4x"), SubResource("Resource_tl53q")])
+weapons = Array[PackedScene]([ExtResource("3_gjopt")])
+enemies = Array[PackedScene]([ExtResource("4_08bof")])
+arenas_dict = {
+"Large": ExtResource("4_nb74s"),
+"Medium": ExtResource("3_xq1u1"),
+"Small": ExtResource("2_3hlwe")
+}
+survival_time = Array[int]([30, 45, 60])
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+navigation_mesh = SubResource("NavigationMesh_v5541")

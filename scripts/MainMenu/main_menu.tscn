@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgqtvpbbrk2k8"]
+
+[ext_resource type="PackedScene" uid="uid://wvbx0jhocpmp" path="res://scripts/environment/directional_light_3d.tscn" id="1_virc5"]
+[ext_resource type="PackedScene" uid="uid://ct7bjj1jf7mrq" path="res://mesh/arena_20-col.glb" id="2_yr031"]
+[ext_resource type="PackedScene" uid="uid://b5fo3ulcfosu4" path="res://mesh/egg.glb" id="3_lbjn2"]
+[ext_resource type="PackedScene" uid="uid://c5kf2s71dgmnt" path="res://mesh/knight.glb" id="4_rskhb"]
+[ext_resource type="PackedScene" uid="uid://b8yaxaqhx15ot" path="res://mesh/walrus.glb" id="5_u3www"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d5mra"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="DirectionalLight3D" parent="." instance=ExtResource("1_virc5")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 11)
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="arena_20-col" parent="Background" instance=ExtResource("2_yr031")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.372684)
+
+[node name="egg" parent="Background" instance=ExtResource("3_lbjn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48765, 0.318558, 6.47335)
+
+[node name="knight" parent="Background" instance=ExtResource("4_rskhb")]
+transform = Transform3D(0.884328, 0, -0.466865, 0, 1, 0, 0.466865, 0, 0.884328, 0.510851, 0.318558, 6.42912)
+
+[node name="walrus" parent="Background" instance=ExtResource("5_u3www")]
+transform = Transform3D(0.775925, 0, -0.630825, 0, 1, 0, 0.630825, 0, 0.775925, 2.65182, 0.318558, 5.39059)
+
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 351.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI"]
+modulate = Color(0, 0, 0, 0.466667)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_d5mra")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="MainMenuUI/VBoxContainer"]
+layout_mode = 2
+text = "Play
+"
+
+[node name="SettingsButton" type="Button" parent="MainMenuUI/VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="QuitButton" type="Button" parent="MainMenuUI/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenuUI/VBoxContainer2"]
+layout_mode = 2
+text = "TITLE"
+horizontal_alignment = 1

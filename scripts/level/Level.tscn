@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://di8d0fpfvjdw8"]
+
+[ext_resource type="Script" path="res://scripts/level/level.gd" id="1_7ac20"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_q2fkd"]
+
+[node name="Level" type="Node3D" groups=["level"]]
+script = ExtResource("1_7ac20")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_q2fkd")
+
+[node name="SurvivalTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SurvivalTimer" to="." method="_on_survival_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

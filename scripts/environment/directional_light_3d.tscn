@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://wvbx0jhocpmp"]
+
+[ext_resource type="Texture2D" uid="uid://dep127pcyyud2" path="res://assets/cloudy_midday_4k.png" id="1_6xdr8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2uf0c"]
+panorama = ExtResource("1_6xdr8")
+
+[sub_resource type="Sky" id="Sky_mh54d"]
+sky_material = SubResource("PanoramaSkyMaterial_2uf0c")
+radiance_size = 5
+
+[sub_resource type="Environment" id="Environment_du35s"]
+background_mode = 2
+sky = SubResource("Sky_mh54d")
+ambient_light_source = 2
+ambient_light_color = Color(0.709461, 0.703673, 0.589187, 1)
+ambient_light_sky_contribution = 0.5
+ambient_light_energy = 0.68
+reflected_light_source = 2
+tonemap_mode = 2
+fog_enabled = true
+fog_light_energy = 0.3
+fog_density = 0.005
+volumetric_fog_length = 30.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -0.0156345, 13.7566, 0)
+light_color = Color(0.672391, 0.742187, 0.586922, 1)
+light_energy = 0.2
+light_indirect_energy = 2.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_du35s")

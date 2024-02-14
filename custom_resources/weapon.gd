@@ -9,6 +9,7 @@ enum Weapon_Type {Sword, Lance, Spear}
 @export var damage: int
 @export var knockback_force: int
 @export var attack_speed: float
+@export var stamina_cost: float
 
 @export_group("Weapon Nodes")
 @export var visuals: Node3D

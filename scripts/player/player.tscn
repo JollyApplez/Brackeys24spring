@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://jmiubdigqpas"]
+[gd_scene load_steps=15 format=3 uid="uid://jmiubdigqpas"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_rg2pc"]
 [ext_resource type="Texture2D" uid="uid://u80w5xoe62tq" path="res://icon.svg" id="1_tcvr1"]
 [ext_resource type="PackedScene" uid="uid://dsyhs635jpf7f" path="res://mesh/TempChar.glb" id="2_siv03"]
+[ext_resource type="PackedScene" uid="uid://c5kf2s71dgmnt" path="res://mesh/knight.glb" id="3_juxvp"]
 [ext_resource type="Script" path="res://scripts/player/WeaponManager.gd" id="4_1bv5v"]
 [ext_resource type="PackedScene" uid="uid://bopykpb0h0duo" path="res://scripts/player/weapons/test_weapon/test_sword.tscn" id="7_on1ta"]
 
@@ -180,10 +181,9 @@ _data = {
 "RESET": SubResource("Animation_fvbvb")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapon") groups=["player"]]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 script = ExtResource("1_rg2pc")
-weapon = NodePath("")
 starter_weapon = ExtResource("7_on1ta")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -193,8 +193,12 @@ shape = SubResource("CapsuleShape3D_sig6g")
 [node name="Visuals" type="Node3D" parent="."]
 transform = Transform3D(1.07465, 0, 0, 0, 1.07465, 0, 0, 0, 1.07465, -0.25, -1, 0)
 
+[node name="knight" parent="Visuals" instance=ExtResource("3_juxvp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.233487, 0, 0)
+
 [node name="PlayerVisuals" parent="Visuals" instance=ExtResource("2_siv03")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Visuals"]
 visible = false
@@ -206,19 +210,11 @@ visible = false
 material_override = SubResource("StandardMaterial3D_dttma")
 size = Vector3(0.61084, 0.17627, 0.313477)
 
-[node name="3rdperson_melee" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-spring_length = 2.0
+[node name="3rdperson_melee" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.998355, -0.0573375, 0, 0.0573375, 0.998355, 0, 3.10352, 0.382135)
 
 [node name="Camera3D" type="Camera3D" parent="3rdperson_melee"]
-transform = Transform3D(1, 0, 0, 0, 0.930533, 0.366209, 0, -0.366209, 0.930533, -0.00410247, 4.76837e-07, 0.0137558)
-fov = 90.0
-
-[node name="3rdperson_ranged" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50303, 1.14927, -0.848533)
-
-[node name="Camera3D" type="Camera3D" parent="3rdperson_ranged"]
-transform = Transform3D(1, 0, 0, 0, 0.981437, 0.191786, 0, -0.191786, 0.981437, 2.57338, 0.280092, 2.20245)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 1.59101, -0.553904, 3.08872)
 current = true
 fov = 90.0
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://co3cajfipcrse"]
+
+[ext_resource type="PackedScene" uid="uid://cwm1xcbvvrmm7" path="res://scripts/level/arenas/arena_20_col.tscn" id="1_0nyhp"]
+
+[node name="arena_20-col" node_paths=PackedStringArray("spawn_points") instance=ExtResource("1_0nyhp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+spawn_points = [NodePath("Spawnpoints/SpawnPoint"), NodePath("Spawnpoints/SpawnPoint2")]
+
+[node name="SpawnPoint2" type="Marker3D" parent="Spawnpoints" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12577, 1.18304, -0.0640535)
+
+[node name="SpawnPoint" parent="Spawnpoints" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42991, 1.41257, -5.43472)

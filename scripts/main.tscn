@@ -1,45 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://by80y1phxrues"]
+[gd_scene load_steps=5 format=3 uid="uid://by80y1phxrues"]
 
 [ext_resource type="PackedScene" uid="uid://jmiubdigqpas" path="res://scripts/player/player.tscn" id="1_388rp"]
+[ext_resource type="PackedScene" uid="uid://wvbx0jhocpmp" path="res://scripts/environment/directional_light_3d.tscn" id="1_opwcv"]
 [ext_resource type="PackedScene" uid="uid://c6bl1vh8e0uws" path="res://scripts/enemy/enemy.tscn" id="2_enc0u"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w82xv"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_mh54d"]
-sky_material = SubResource("ProceduralSkyMaterial_w82xv")
-
-[sub_resource type="Environment" id="Environment_du35s"]
-background_mode = 2
-sky = SubResource("Sky_mh54d")
-tonemap_mode = 2
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_6erik"]
-vertices = PackedVector3Array(-29.5, 1, -29.5, -29.5, 1, 29.5, 29.5, 1, 29.5, 29.5, 1, -29.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebjqf"]
-albedo_color = Color(0, 0.194958, 0.0312425, 1)
+[ext_resource type="PackedScene" uid="uid://dqqy5ukptgbjy" path="res://scripts/level/level_manager.tscn" id="9_tt14h"]
 
 [node name="Main" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_du35s")
+[node name="LevelManager" parent="." instance=ExtResource("9_tt14h")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -0.0156345, 13.7566, 0)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-navigation_mesh = SubResource("NavigationMesh_6erik")
-
-[node name="Ground" type="CSGBox3D" parent="NavigationRegion3D"]
-use_collision = true
-size = Vector3(60, 1, 60)
-material = SubResource("StandardMaterial3D_ebjqf")
+[node name="DirectionalLight3D" parent="." instance=ExtResource("1_opwcv")]
 
 [node name="Player" parent="." instance=ExtResource("1_388rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.27656, 8.69015)
 
 [node name="Enemy" parent="." instance=ExtResource("2_enc0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -18.8448)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 1.64779, -7.37098)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6, 9)
+use_collision = true
+size = Vector3(4, 1, 5)

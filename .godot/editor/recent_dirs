@@ -1,3 +1,9 @@
+res://scripts/MainMenu
+res://scripts/environment
+res://scripts/level/arenas
+res://scripts/Autoloads
+res://scripts/level
+res://
 res://scripts/utility
 res://scripts/player/weapons/test_weapon
 res://scripts/enemy

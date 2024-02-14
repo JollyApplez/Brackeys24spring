@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bopykpb0h0duo"]
+[gd_scene load_steps=5 format=3 uid="uid://bopykpb0h0duo"]
 
 [ext_resource type="Script" path="res://scripts/player/weapons/test_weapon/test_sword.gd" id="1_m1sef"]
 [ext_resource type="BoxMesh" uid="uid://bxfgvrplrgbcl" path="res://scripts/player/weapons/test_weapon/test_mesh.tres" id="2_6vj44"]
 [ext_resource type="PackedScene" uid="uid://dfprbe6t7sd86" path="res://scripts/utility/hurtbox.tscn" id="2_euhkp"]
+[ext_resource type="PackedScene" uid="uid://b6qjei1bo68ci" path="res://mesh/bat.glb" id="3_uj4h2"]
 
 [node name="TestSword" type="Node3D" node_paths=PackedStringArray("visuals", "hurtbox")]
 script = ExtResource("1_m1sef")
@@ -15,6 +16,8 @@ hurtbox = NodePath("hurtbox")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697764, 0)
 mesh = ExtResource("2_6vj44")
+
+[node name="bat" parent="." instance=ExtResource("3_uj4h2")]
 
 [node name="hurtbox" parent="." instance=ExtResource("2_euhkp")]
 
