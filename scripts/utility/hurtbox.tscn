@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfprbe6t7sd86"]
+
+[ext_resource type="Script" path="res://scripts/utility/hurtbox.gd" id="1_tw7t5"]
+[ext_resource type="Shape3D" uid="uid://dcoscgwxoca1t" path="res://scripts/player/weapons/test_weapon/test_col_shape.tres" id="2_kl22v"]
+
+[node name="hurtbox" type="Area3D" groups=["hurtbox"]]
+script = ExtResource("1_tw7t5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.903926, 0)
+shape = ExtResource("2_kl22v")
+disabled = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

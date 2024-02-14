@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bopykpb0h0duo"]
+
+[ext_resource type="Script" path="res://scripts/player/weapons/test_weapon/test_sword.gd" id="1_m1sef"]
+[ext_resource type="BoxMesh" uid="uid://bxfgvrplrgbcl" path="res://scripts/player/weapons/test_weapon/test_mesh.tres" id="2_6vj44"]
+[ext_resource type="PackedScene" uid="uid://dfprbe6t7sd86" path="res://scripts/utility/hurtbox.tscn" id="2_euhkp"]
+
+[node name="TestSword" type="Node3D" node_paths=PackedStringArray("visuals", "hurtbox")]
+script = ExtResource("1_m1sef")
+damage = 1
+knockback_force = 15
+attack_speed = 1.0
+visuals = NodePath("MeshInstance3D")
+hurtbox = NodePath("hurtbox")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697764, 0)
+mesh = ExtResource("2_6vj44")
+
+[node name="hurtbox" parent="." instance=ExtResource("2_euhkp")]
+
+[node name="CollisionShape3D" parent="hurtbox" index="0"]
+disabled = false
+
+[editable path="hurtbox"]

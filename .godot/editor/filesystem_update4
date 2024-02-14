@@ -1,0 +1,11 @@
+res://scripts/player/player.tscn
+res://scripts/utility/hurtbox.gd
+res://custom_resources/weapon.gd
+res://scripts/player/weapons/test_weapon/test_sword.tscn
+res://scripts/player/player.gd
+res://scripts/main.tscn
+res://scripts/enemy/enemy.tscn
+res://scripts/utility/hitbox.tscn
+res://scripts/player/weapons/test_weapon/test_sword.gd
+res://scripts/enemy/enemy.gd
+res://custom_resources/stats.gd

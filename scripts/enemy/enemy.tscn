@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6bl1vh8e0uws"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_8qdb0"]
+[ext_resource type="PackedScene" uid="uid://g2iltdtpfoi2" path="res://scripts/utility/hitbox.tscn" id="2_pph2o"]
+[ext_resource type="Script" path="res://custom_resources/stats.gd" id="2_xn4gw"]
+[ext_resource type="Script" path="res://scripts/utility/hitbox.gd" id="3_ko3i2"]
+
+[sub_resource type="Resource" id="Resource_bb7s1"]
+script = ExtResource("2_xn4gw")
+max_health = 3
+speed = 4
+knockback_resistance = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oa1qi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2t4k"]
+albedo_color = Color(0.870902, 0, 0.194953, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_n6u6k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bow7d"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u3705"]
+size = Vector3(0.5, 0.3, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2j4qh"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_8qdb0")
+stats = SubResource("Resource_bb7s1")
+staggered_time = 0.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oa1qi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_a2t4k")
+mesh = SubResource("CapsuleMesh_n6u6k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.404442, -0.449136)
+material_override = SubResource("StandardMaterial3D_bow7d")
+mesh = SubResource("BoxMesh_u3705")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("host") instance=ExtResource("2_pph2o")]
+script = ExtResource("3_ko3i2")
+host = NodePath("..")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape3D_2j4qh")
+
+[editable path="Hitbox"]

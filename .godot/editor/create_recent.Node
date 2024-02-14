@@ -1,0 +1,15 @@
+Weapon
+MeshInstance3D
+CollisionShape3D
+Area3D
+NavigationRegion3D
+NavigationAgent3D
+CharacterBody3D
+Node3D
+AnimationPlayer
+SpringArm3D
+Sprite3D
+TextureRect
+CanvasLayer
+SubViewport
+Camera3D
